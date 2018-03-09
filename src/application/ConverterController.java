@@ -50,23 +50,33 @@ public class ConverterController {
 		//read values from textfield(s)
 		String box1 = textfield1.getText();
 		String box2 = textfield2.getText();
-		if(!box1.equals("")){
+		try
+		{
+		if(!box1.isEmpty() && box2.isEmpty() || textfield1.isFocused()){
 			double left = Double.parseDouble(box1.trim());
 			//for testing
 			System.out.println("handleConvert converting "+unitbox1.getValue()+" to "+unitbox2.getValue());
 			
 			double result = (left *unitbox1.getValue().getValue()/unitbox2.getValue().getValue());
-			textfield2.setText(""+result);
+			textfield2.setText(String.format("%.4g", result));
 		}
 		
-		else if(!box2.equals("")){
-			double right =Double.parseDouble(box2.trim());
+		else if(!box2.isEmpty() && box1.isEmpty() || textfield2.isFocused()){
+			double right = Double.parseDouble(box2.trim());
 			//for testing
 			System.out.println("handleConvert converting "+unitbox2.getValue()+" to "+unitbox1.getValue());
 			
 			double result = (right *unitbox2.getValue().getValue()/unitbox1.getValue().getValue());
-			textfield1.setText(""+result);
+			textfield1.setText(String.format("%.4g", result));
+		
 		}
+		
+		} catch (Exception e) {
+			textfield1.setStyle("-fx-text-fill: red");
+			textfield1.setText("ERROR");
+			textfield2.setStyle("-fx-text-fill: red");
+			textfield2.setText("ERROR");
+		}	
 		
 	}	
 	
@@ -89,6 +99,9 @@ public class ConverterController {
 	public void handleClear(ActionEvent event){
 		textfield1.clear();
 		textfield2.clear();
+		textfield1.setStyle("-fx-text-fill: black");
+		textfield2.setStyle("-fx-text-fill: black");
+
 		System.out.println("CLEAR");
 	}
 }

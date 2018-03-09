@@ -26,6 +26,6 @@ public enum Length {
 	public double getValue(){
 		return this.value;
 	}
-	
+
 	
 }
