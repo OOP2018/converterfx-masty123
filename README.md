@@ -12,3 +12,7 @@ An enum class that contain many units.
 ## ConvertController
 
 A javaFX class that control many method. This class is a link between GUI and codes.
+
+## TestClass
+
+A class for testing enum class.
