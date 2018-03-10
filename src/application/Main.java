@@ -20,6 +20,7 @@ public class Main extends Application {
 	
 			Parent root = (Parent)FXMLLoader.load(getClass().getResource("ConverterUI.fxml"));
 			Scene scene = new Scene(root);
+			primaryStage.setTitle("Length Converter");
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
 			primaryStage.show();
