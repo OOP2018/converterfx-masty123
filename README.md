@@ -2,7 +2,7 @@
 
 A length converter program that use for converting from old unit into a different unit, depends on user
 
-![GUI](img/previewGUI.png)
+![GUI](img/previewGUI.PNG)
 
 ## Main
 A main class that use to initiate the program.
