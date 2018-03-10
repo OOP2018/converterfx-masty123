@@ -2,7 +2,7 @@
 
 A length converter program that use for converting from old unit into a different unit, depends on user
 
-![GUI](https://raw.githubusercontent.com/masty123/converterfx-masty123/master/img/previewGUI.PNG)
+![GUI](img/previewGUI.png)
 
 ## Main
 A main class that use to initiate the program.
