@@ -1,4 +1,4 @@
-package application;
+package converter;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,8 +27,6 @@ public class ConverterController {
 	 */
 	@FXML
 	public void initialize(){
-		// This is for testing
-		System.out.println("Running initialize");
 		if (unitbox1 != null) {
 		unitbox1.getItems().addAll( Length.values() );
 		unitbox1.getSelectionModel().select(0); // select an item to show
@@ -53,19 +51,13 @@ public class ConverterController {
 		try
 		{
 		if(!box1.isEmpty() && box2.isEmpty() || textfield1.isFocused()){
-			double left = Double.parseDouble(box1.trim());
-			//for testing
-			System.out.println("handleConvert converting "+unitbox1.getValue()+" to "+unitbox2.getValue());
-			
+			double left = Double.parseDouble(box1.trim());			
 			double result = (left *unitbox1.getValue().getValue()/unitbox2.getValue().getValue());
 			textfield2.setText(String.format("%.4g", result));
 		}
 		
 		else if(!box2.isEmpty() && box1.isEmpty() || textfield2.isFocused()){
-			double right = Double.parseDouble(box2.trim());
-			//for testing
-			System.out.println("handleConvert converting "+unitbox2.getValue()+" to "+unitbox1.getValue());
-			
+			double right = Double.parseDouble(box2.trim());			
 			double result = (right *unitbox2.getValue().getValue()/unitbox1.getValue().getValue());
 			textfield1.setText(String.format("%.4g", result));
 		

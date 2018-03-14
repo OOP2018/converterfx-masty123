@@ -1,4 +1,4 @@
-package application;
+package converter;
 
 public class TestClass {
 	public static void main(String[] args) {

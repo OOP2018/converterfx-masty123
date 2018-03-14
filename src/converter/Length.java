@@ -1,4 +1,4 @@
-package application;
+package converter;
 /**
  * An enum class that contain many units.
  * @author Theeruth Borisuth
