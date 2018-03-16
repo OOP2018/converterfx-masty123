@@ -1,29 +1,30 @@
 package converter;
 /**
- * An enum class that contain length units.
+ * An enum class that contain area units.
  * @author Theeruth Borisuth
  *
  */
-public enum Length implements Unit {
-	//All type of units
-	METER(1), 
-	KILLOMETER(1000), 
-	CENTIMETER(0.01), 
-	MILE(1609.344), 
-	FOOT(0.30480), 
-	WA(2), 
-	AU(149597870700.0);
+public enum Area implements Unit {
+	SQUAREMETER(1.00),
+	SQUAREKILOMETER(1000000.0),
+	SQUARECENTIMETER(0.0001),
+	SQUAREMILE(2589988.11),
+	SQUAREFOOT(0.09290304),
+	SQUAREWA(4.0),
+	SQUAREINCH(0.00064516),
+	NGAN(400.0),
+	RAI(1600.0);
 	
 	//value of unit
 	private final double value ;
-	
+		
 
-	
+		
 	/**
 	 * Constructor of Length initialize with value of unit.
 	 * @param value
 	 */
-	private Length(double value){
+	private Area(double value){
 		this.value = value;
 	}
 
@@ -36,13 +37,11 @@ public enum Length implements Unit {
 	}
 	
 	/**
-	 * Unit an length unit to another length unit.
+	 * Unit an area unit to another area unit.
 	 * @return result of the converted unit
 	 */
 	@Override
 	public double convert(double amount, Unit input, Unit convert) {
 		return amount*input.getValue()/convert.getValue();
 	}
-
-	
 }

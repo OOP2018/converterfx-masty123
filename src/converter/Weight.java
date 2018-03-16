@@ -1,29 +1,33 @@
 package converter;
 /**
- * An enum class that contain length units.
+ * An enum class that contain Weight units.
  * @author Theeruth Borisuth
  *
  */
-public enum Length implements Unit {
-	//All type of units
-	METER(1), 
-	KILLOMETER(1000), 
-	CENTIMETER(0.01), 
-	MILE(1609.344), 
-	FOOT(0.30480), 
-	WA(2), 
-	AU(149597870700.0);
+public enum Weight implements Unit {
+	GRAM(0.001),
+	KILOGRAM(1.0),
+	MILLIGRAM(0.000001),
+	TONNNE(1000.0),
+	OUNCE(0.02834952),
+	POUND(0.45359237),
+	STONE(6.35029),
+	QUARTER(12.70058),
+	HUNDREDWEIGHT(50.8023),
+	BAHT(0.015),
+	TALUNG(0.06),
+	CHANG(0.012),
+	HAB(0.06);
+	
 	
 	//value of unit
 	private final double value ;
 	
-
-	
 	/**
-	 * Constructor of Length initialize with value of unit.
+	 * Constructor of Weight initialize with value of unit.
 	 * @param value
 	 */
-	private Length(double value){
+	private Weight(double value){
 		this.value = value;
 	}
 
@@ -36,13 +40,11 @@ public enum Length implements Unit {
 	}
 	
 	/**
-	 * Unit an length unit to another length unit.
+	 * Unit an weight unit to another weight unit.
 	 * @return result of the converted unit
 	 */
 	@Override
 	public double convert(double amount, Unit input, Unit convert) {
 		return amount*input.getValue()/convert.getValue();
 	}
-
-	
 }

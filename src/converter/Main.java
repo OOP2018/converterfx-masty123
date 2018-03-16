@@ -13,7 +13,9 @@ import javafx.scene.Scene;
 public class Main extends Application {
 
 	
-	
+	/**
+	 * setting up the user interface.
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -23,12 +25,17 @@ public class Main extends Application {
 			primaryStage.setTitle("Length Converter");
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
+			primaryStage.setResizable(false);
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			System.out.println("Exception creating scene: "+ e.getMessage());
 		}
 	}
-	
+	/**
+	 * Launch the program
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
