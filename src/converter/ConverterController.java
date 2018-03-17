@@ -154,6 +154,7 @@ public class ConverterController {
 		if(!box2.isEmpty() && box1.isEmpty() || textfield2.isFocused()){
 			double right = Double.parseDouble(box2.trim());			
 			double result = u2.convert(right, unitbox2.getValue(), unitbox1.getValue());
+			System.out.println(result);
 			textfield1.setText(String.format("%.4g", result));
 		
 		}

@@ -25,7 +25,6 @@ public class Main extends Application {
 			primaryStage.setTitle("Length Converter");
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
-			primaryStage.setResizable(false);
 			primaryStage.show();
 			
 		} catch(Exception e) {

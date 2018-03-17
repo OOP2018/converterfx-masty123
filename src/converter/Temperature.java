@@ -13,7 +13,7 @@ public enum Temperature implements Unit{
 		public double convert(double amount, Unit input, Unit convert) {
 			try{
 				
-				return ((Temperature)input).toCelcius(amount);
+				return ((Temperature)convert).toCelcius(amount);
 			}catch(Exception e){
 				System.out.println("invalid input");
 			}
@@ -32,7 +32,7 @@ public enum Temperature implements Unit{
 		public double toKelvin(double d) {return (d * 1.8) - 459.67;}
 		public double convert(double amount, Unit input, Unit convert) {
 			try{
-				return ((Temperature)input).toFahrenheit(amount);
+				return ((Temperature)convert).toFahrenheit(amount);
 			}
 			catch(Exception e){
 				System.out.println("Invalid input");
@@ -54,7 +54,7 @@ public enum Temperature implements Unit{
 		public double toKelvin(double d) {return d;}
 		public double convert(double amount, Unit input, Unit convert) {
 			try{
-				return ((Temperature)input).toKelvin(amount);
+				return ((Temperature)convert).toKelvin(amount);
 			}
 			catch(Exception e){
 				System.out.println("Invalid input");
