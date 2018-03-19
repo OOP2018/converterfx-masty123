@@ -7,35 +7,28 @@ package converter;
  * @author Theeruth Borisuth
  */
 public enum UnitType {
-	LENGTH("Length", Length.values() ),
-	AREA("Area", Area.values() ),
-	WEIGHT("Weight", Weight.values() ),
-	TIME("Time", Time.values() );
+	LENGTH("Length"),
+	AREA("Area"),
+	WEIGHT("Weight"),
+	TIME("Time"),
+	TEMPERATURE("Temperature");
+	//variable
+	private String name ;
 	
-	/** name of unit type */
-	private final String name;
-	/** value of all unit in the type */
-	private final Unit[] type;
-	
-	/** Store name and unit array in the attribute */
-	private UnitType(String name, Unit[] type) {
-		this.name = name;
-		this.type = type;
+	/**
+	 * 
+	 * @param name
+	 */
+	private UnitType(String name) {
+		this.name = name ;
 	}
 	
 	/**
-	 * Return name of the unit type.
-	 * @return name of unit type
+	 * 
+	 * @return
 	 */
-	public String toString() {
-		return name;
+	public String getName(){
+		return name ;
 	}
-	
-	/**
-	 * Return value of all unit in the type.
-	 * @return value of all unit in the type
-	 */
-	public Unit[] getType() {
-		return type;
-	}
+
 }

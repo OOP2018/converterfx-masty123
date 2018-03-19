@@ -22,6 +22,6 @@ public interface Unit {
 	 * convert the unit into another unit
 	 * @return String result of that unit
 	 */
-	public double convert(double amount, Unit input, Unit convert);
+	public double convert(double amount,  Unit convert);
 
 }

@@ -35,8 +35,8 @@ public enum Time implements Unit {
 		}
 
 		@Override
-		public double convert(double amount, Unit input, Unit convert) {
-			return amount*input.getValue()/convert.getValue();
+		public double convert(double amount,  Unit convert) {
+			return amount*this.getValue()/convert.getValue();
 		}
 
 }

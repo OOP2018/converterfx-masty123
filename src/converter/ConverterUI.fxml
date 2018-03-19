@@ -30,7 +30,7 @@
       </MenuBar>
       <HBox alignment="CENTER" prefHeight="120.0" prefWidth="1177.0" VBox.vgrow="ALWAYS">
          <children>
-            <TextField fx:id="textfield1" alignment="CENTER" onAction="#handleConvert" prefHeight="26.0" prefWidth="160.0">
+            <TextField fx:id="textfield1" alignment="CENTER" onAction="#handleConvert" onKeyTyped="#handleLeftFocus" prefHeight="26.0" prefWidth="160.0">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -40,7 +40,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </ComboBox>
-            <TextField fx:id="textfield2" alignment="CENTER" onAction="#handleConvert" prefHeight="26.0" prefWidth="170.0">
+            <TextField fx:id="textfield2" alignment="CENTER" onAction="#handleConvert" onKeyTyped="#handleRightFocus" prefHeight="26.0" prefWidth="170.0">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
