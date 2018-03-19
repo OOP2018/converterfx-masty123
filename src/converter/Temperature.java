@@ -10,7 +10,7 @@ public enum Temperature implements Unit{
 		public double toKelvin(double d){return d - 273.15;}
 
 		@Override
-		public double convert(double amount, Unit input, Unit convert) {
+		public double convert(double amount, Unit convert) {
 			try{
 				
 				return ((Temperature)convert).toCelcius(amount);
@@ -30,7 +30,7 @@ public enum Temperature implements Unit{
 		public double toCelcius(double d) {return (d * 1.8) + 32; }
 		public double toFahrenheit(double d) {return d;}
 		public double toKelvin(double d) {return (d * 1.8) - 459.67;}
-		public double convert(double amount, Unit input, Unit convert) {
+		public double convert(double amount, Unit convert) {
 			try{
 				return ((Temperature)convert).toFahrenheit(amount);
 			}
@@ -52,7 +52,7 @@ public enum Temperature implements Unit{
 		public double toCelcius(double d) {return d + 273.15;}
 		public double toFahrenheit(double d) {return (d + 459.67)/1.8;}
 		public double toKelvin(double d) {return d;}
-		public double convert(double amount, Unit input, Unit convert) {
+		public double convert(double amount, Unit convert) {
 			try{
 				return ((Temperature)convert).toKelvin(amount);
 			}

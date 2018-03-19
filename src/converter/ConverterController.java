@@ -1,10 +1,13 @@
 package converter;
+
 import javafx.event.EventHandler;
+
+import java.awt.event.KeyListener;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -25,11 +28,11 @@ public class ConverterController {
 	@FXML
 	ComboBox<Unit> unitbox2 ;
 	@FXML
-	Menu menu ;
+	Menu menu;
 	@FXML
 	MenuItem length;
 	@FXML
-	MenuItem weight;
+    MenuItem weight;
 	@FXML
 	MenuItem area;
 	@FXML
@@ -38,6 +41,10 @@ public class ConverterController {
 	MenuItem temperature;
 	@FXML
 	MenuItem exit;
+	//variables
+	private final String  DEFAULT_TYPE = "Length";
+	private UnitFactory factory = new UnitFactory();
+	private boolean isLeft = true;
 	
 	
 	
@@ -47,89 +54,21 @@ public class ConverterController {
 	 */
 	@FXML
 	public void initialize(){
+
+		//set the default unit
+		setBox(unitbox1, DEFAULT_TYPE);
+		setBox(unitbox2, DEFAULT_TYPE);
 		
-		if (unitbox1 != null) {
-		unitbox1.getItems().addAll( Length.values() );
-		unitbox1.getSelectionModel().select(0); // select an item to show
-		}
-		if (unitbox2 != null) {
-		unitbox2.getItems().addAll( Length.values() );
-		unitbox2.getSelectionModel().select(1); // select an item to show
-		}
-		
-		//Change to weight converter
-		weight.setOnAction(new EventHandler<ActionEvent>() {
-		
-			@Override
-			public void handle(ActionEvent event) {
-				if (unitbox1 != null) {
-					unitbox1.getItems().clear();
-					unitbox1.getItems().addAll( Weight.values() );
-					unitbox1.getSelectionModel().select(0); // select an item to show
-				}
-				if (unitbox2 != null) {
-					unitbox2.getItems().clear();
-				    unitbox2.getItems().addAll( Weight.values() );
-					unitbox2.getSelectionModel().select(1); // select an item to show
-				}
-			}
-		});
-		
-		//Change to area converter
-		area.setOnAction(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				if (unitbox1 != null) {
-					unitbox1.getItems().clear();
-					unitbox1.getItems().addAll( Area.values() );
-					unitbox1.getSelectionModel().select(0); // select an item to show
-				}
-				if (unitbox2 != null) {
-					unitbox2.getItems().clear();
-				    unitbox2.getItems().addAll( Area.values() );
-					unitbox2.getSelectionModel().select(1); // select an item to show
-				}
-			}
-		});
-		
-		//Change to time converter
-		time.setOnAction(new EventHandler<ActionEvent>() {
-					
-		@Override
-		public void handle(ActionEvent event) {
-		if (unitbox1 != null) {
-		unitbox1.getItems().clear();
-		unitbox1.getItems().addAll( Time.values() );
-		unitbox1.getSelectionModel().select(0); // select an item to show
-		}
-		if (unitbox2 != null) {
-			unitbox2.getItems().clear();
-			unitbox2.getItems().addAll( Time.values() );
-			unitbox2.getSelectionModel().select(1); // select an item to show
-			}
-		   }
-		});
-		
-		//Change to temperature converter
-		temperature.setOnAction(new EventHandler<ActionEvent>() {
-			
-		@Override
-		public void handle(ActionEvent event) {
-		if (unitbox1 != null) {
-			unitbox1.getItems().clear();
-			unitbox1.getItems().addAll( Temperature.values() );
-			unitbox1.getSelectionModel().select(0); // select an item to show
-		    }
-		if (unitbox2 != null) {
-			unitbox2.getItems().clear();
-			unitbox2.getItems().addAll( Temperature.values() );
-			unitbox2.getSelectionModel().select(1); // select an item to show
-			}
-		   }
-		});
-		
-		
+		//Change to weight converter.
+		weight.setOnAction(new EventListener("Weight"));
+		//Change to time converter.
+		time.setOnAction(new EventListener("Time"));
+		//Change to Area converter.
+		area.setOnAction(new EventListener("Area"));
+		//Change to Temperature converter.
+		temperature.setOnAction(new EventListener("Temperature"));
+		//Change to Length converter.
+		length.setOnAction(new EventListener("Length"));
 	}
 	
 	/**
@@ -145,16 +84,17 @@ public class ConverterController {
 		Unit u2 = unitbox2.getValue();
 		try
 		{
-		if(!box1.isEmpty() && box2.isEmpty() || textfield1.isFocused()){
+		if(!box1.isEmpty() && box2.isEmpty() || isLeft){
 			double left = Double.parseDouble(box1.trim());			
-			double result = u1.convert(left, unitbox1.getValue(), unitbox2.getValue());
-			textfield2.setText(String.format("%.4g", result));
+			double result = u1.convert(left, unitbox2.getValue());
+			textfield2.setText(String.format("%.5g", result));
 		}
 		
-		if(!box2.isEmpty() && box1.isEmpty() || textfield2.isFocused()){
+		if(!box2.isEmpty() && box1.isEmpty() || !isLeft){
 			double right = Double.parseDouble(box2.trim());			
-			double result = u2.convert(right, unitbox2.getValue(), unitbox1.getValue());
-			textfield1.setText(String.format("%.4g", result));
+			double result = u2.convert(right, unitbox1.getValue());
+			System.out.println(result);
+			textfield1.setText(String.format("%.5g", result));
 		
 		}
 		} catch (Exception e) {
@@ -195,5 +135,39 @@ public class ConverterController {
 	@FXML
 	public void handleExit(ActionEvent event){
 		System.exit(0);
+	}
+	
+	@FXML
+	public void handleLeftFocus(KeyEvent event) {
+		isLeft = true ;
+	}
+	
+	@FXML
+	public void handleRightFocus(KeyEvent event) {
+		isLeft = false ;
+	}
+	
+	
+	public void setBox(ComboBox<Unit> unitbox, String type) {
+		if (unitbox != null) {
+			unitbox.getItems().clear();
+			unitbox.getItems().addAll(factory.getUnits(type));
+			unitbox.getSelectionModel().select(0); // select an item to show
+		}
+	}
+	
+	class EventListener implements EventHandler<ActionEvent> {
+		
+		private String type ;
+		
+		public EventListener(String type) {
+			this.type = type ;
+		}
+		@Override
+		public void handle(ActionEvent event) {
+			setBox(unitbox1, type);
+			setBox(unitbox2, type);
+
+		}	
 	}
 }

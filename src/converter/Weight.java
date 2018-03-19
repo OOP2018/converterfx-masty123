@@ -44,7 +44,7 @@ public enum Weight implements Unit {
 	 * @return result of the converted unit
 	 */
 	@Override
-	public double convert(double amount, Unit input, Unit convert) {
-		return amount*input.getValue()/convert.getValue();
+	public double convert(double amount,  Unit convert) {
+		return amount*this.getValue()/convert.getValue();
 	}
 }
