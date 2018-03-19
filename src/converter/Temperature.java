@@ -1,5 +1,10 @@
 package converter;
-
+/**
+ * An enum class that contain Temperature units. 
+ * NOTE : It still badly written.
+ * @author Theeruth Borisuth
+ *
+ */
 public enum Temperature implements Unit{
 	CELCIUS(){
 		
@@ -74,13 +79,15 @@ public enum Temperature implements Unit{
 	 */
 	Temperature(){}
 	
-	
+	/**
+	 * get the value of the enum
+	 */
 	@Override
 	public double getValue() {
 		return value;
 	}
 	
-	
+	/**abstract classes**/
 	public abstract double toCelcius(double d);
 	public abstract double toFahrenheit(double d);
 	public abstract double toKelvin(double d);

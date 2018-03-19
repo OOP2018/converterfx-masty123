@@ -41,9 +41,10 @@ public class ConverterController {
 	MenuItem temperature;
 	@FXML
 	MenuItem exit;
+	
 	//variables
 	private final String  DEFAULT_TYPE = "Length";
-	private UnitFactory factory = new UnitFactory();
+	private UnitFactory factory = UnitFactory.getInstance();
 	private boolean isLeft = true;
 	
 	
@@ -137,17 +138,29 @@ public class ConverterController {
 		System.exit(0);
 	}
 	
+	/**
+	 * Set focus to the left side
+	 * @param event
+	 */
 	@FXML
 	public void handleLeftFocus(KeyEvent event) {
 		isLeft = true ;
 	}
 	
+	/**
+	 * Set focus to the right side
+	 * @param event
+	 */
 	@FXML
 	public void handleRightFocus(KeyEvent event) {
 		isLeft = false ;
 	}
 	
-	
+	/**
+	 * This method setting up the combo box of the unit converter.
+	 * @param unitbox : combBox box of the program.
+	 * @param type : type of the unit.
+	 */
 	public void setBox(ComboBox<Unit> unitbox, String type) {
 		if (unitbox != null) {
 			unitbox.getItems().clear();
@@ -156,13 +169,24 @@ public class ConverterController {
 		}
 	}
 	
+	/**
+	 * this anonymous class is for setting up the comboBox
+	 * @author Theeruth Borisuth
+	 *
+	 */
 	class EventListener implements EventHandler<ActionEvent> {
 		
+		//variables
 		private String type ;
 		
+		//constructor
 		public EventListener(String type) {
 			this.type = type ;
 		}
+		
+		/**
+		 * A method for setting up comboBox.
+		 */
 		@Override
 		public void handle(ActionEvent event) {
 			setBox(unitbox1, type);
