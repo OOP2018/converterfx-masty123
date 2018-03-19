@@ -1,8 +1,16 @@
 package converter;
 
 public class UnitFactory {
+	
+	public static UnitFactory instance = new UnitFactory();
+	
 	/**
-	 * 
+	 * For initialize
+	 */
+	private UnitFactory(){}
+	
+	/**
+	 * Get the string of the unit
 	 * @return
 	 */
 	public String[] getUnitTypes(){
@@ -11,7 +19,7 @@ public class UnitFactory {
 	}
 	
 	/**
-	 * 
+	 * Get the array of the unit.
 	 * @param unitType
 	 * @return
 	 */
@@ -22,6 +30,15 @@ public class UnitFactory {
 		if(unitType.equalsIgnoreCase("Time")) return Time.values();
 		return Length.values();	
 	}
+	
+	/**
+	 * 
+	 * @return instance
+	 */
+	public static UnitFactory getInstance() {
+		return instance;
+	}
+	
 	
 	/**
 	 * 
