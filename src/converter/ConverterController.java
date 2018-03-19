@@ -1,10 +1,10 @@
 package converter;
-
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -25,11 +25,11 @@ public class ConverterController {
 	@FXML
 	ComboBox<Unit> unitbox2 ;
 	@FXML
-	Menu menu;
+	Menu menu ;
 	@FXML
 	MenuItem length;
 	@FXML
-    MenuItem weight;
+	MenuItem weight;
 	@FXML
 	MenuItem area;
 	@FXML
@@ -41,12 +41,12 @@ public class ConverterController {
 	
 	
 	
+	
 	/**
 	 * Initialize units into the comboBox
 	 */
 	@FXML
 	public void initialize(){
-	
 		
 		if (unitbox1 != null) {
 		unitbox1.getItems().addAll( Length.values() );
@@ -154,7 +154,6 @@ public class ConverterController {
 		if(!box2.isEmpty() && box1.isEmpty() || textfield2.isFocused()){
 			double right = Double.parseDouble(box2.trim());			
 			double result = u2.convert(right, unitbox2.getValue(), unitbox1.getValue());
-			System.out.println(result);
 			textfield1.setText(String.format("%.4g", result));
 		
 		}

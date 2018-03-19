@@ -15,9 +15,9 @@
    <children>
       <MenuBar prefHeight="25.0" prefWidth="85.0">
         <menus>
-          <Menu fx:id="menu" mnemonicParsing="false" text="Unit Type">
+          <Menu mnemonicParsing="false" text="Unit Type">
             <items>
-              <MenuItem fx:id="length" mnemonicParsing="false" text="Length" />
+                  <MenuItem fx:id="length" mnemonicParsing="false" text="Length" />
                   <MenuItem fx:id="weight" mnemonicParsing="false" text="Weight" />
                   <MenuItem fx:id="area" mnemonicParsing="false" text="Area" />
                   <MenuItem fx:id="time" mnemonicParsing="false" text="Time" />
